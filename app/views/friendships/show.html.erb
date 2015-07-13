@@ -1,0 +1,14 @@
+<h1>Your Friend Requests</h1>
+<% @my_requests.each do |request| %>
+  <li><%= request.friend.email %></li>
+<% end %>
+
+<h1>Pending Friend Requests</h1>
+<% @pending_friends.each do |friendship| %>
+  <li>
+  <%= friendship.user.email %>
+  <%= link_to "Accept", friendship, method: "put" %>
+  <%= link_to "Deny", friendship, method: "delete" %>
+  </li>
+<% end %>
+

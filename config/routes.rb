@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#home'
+  get 'users' => 'users#index'
+  get 'user' => 'users#show'
+  resources :friendships, only: [:create, :destroy, :update]
+  get 'friend_requests' => 'friendships#show'
   # devise_scope :user do
   #   root to: 'devise/sessions#new'
   # end

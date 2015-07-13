@@ -1,0 +1,8 @@
+<%= "Logged in as #{current_user.email}" if user_signed_in? %>
+<%= link_to "Sign in", new_user_session_path, :method => :get %>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<%= link_to "Sign up", new_user_registration_path, :method => :get %>
+<%= link_to "User list", users_path %>
+<%= link_to "Friends list", user_path %>
+<%= link_to " #{current_user.inverse_friendships.where(status: false).count} Pending Friend Requests", friend_requests_path if user_signed_in?%>
+
