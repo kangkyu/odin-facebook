@@ -1,6 +1,9 @@
 <h1>Your Friend Requests</h1>
 <% @my_requests.each do |request| %>
-  <li><%= request.friend.email %></li>
+  <li>
+    <%= request.friend.email%>
+    <%= link_to "Cancel Request", request, method: "delete" %>
+  </li>
 <% end %>
 
 <h1>Pending Friend Requests</h1>

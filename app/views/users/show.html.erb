@@ -1,10 +1,7 @@
-<h1>Friends</h1>
-<ul>
-  <% @friendships.each do |friendship| %>
-    <% if current_user.id == friendship.user_id %>
-      <li><%= friendship.friend.email %> <%= link_to "Remove", friendship, method: "delete" %></li>      
-    <% elsif current_user.id == friendship.friend_id %>
-      <li><%= friendship.user.email %> <%= link_to "Remove", friendship, method: "delete" %></li>
-    <% end %>
-  <% end %>
-</ul>
+<h1>Profile Information</h1>
+<%= gravatar_for @user %><br>
+<%= @user.email %>
+
+<h2>Posts</h2>
+<%= render 'profile_posts' %>
+
