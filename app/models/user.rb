@@ -22,5 +22,6 @@ class User < ActiveRecord::Base
   #dependent destroy
   has_many :posts
   has_many :comments
+  has_many :likes
 
 end

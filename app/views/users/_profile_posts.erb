@@ -3,7 +3,7 @@
     <li>
       <%= "Author: #{post.user.email}" %><br>
       <%= "Content: #{post.content}" %><br>
-      <%= "Likes: #{post.likes}" %><br>
+      <%= "Likes: #{post.likes.count}" %><br>
       <%= link_to "Like this post", method: 'post' %><br>
     </li><br>
 

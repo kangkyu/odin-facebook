@@ -4,6 +4,8 @@ class Friendship < ActiveRecord::Base
   scope :accepted, -> { where(status: true) }
   scope :pending, -> { where(status: false) }
 
+  #prevents duplicate entries if format is user_id, friend_id
+  #does not stop duplicate when values are swapped
   validates_uniqueness_of :user_id, :scope  => :friend_id
 
   #supposed to prevent friending self, but not working 

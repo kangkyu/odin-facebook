@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  resources :likes, only: [:create, :destroy]
   # devise_scope :user do
   #   root to: 'devise/sessions#new'
   # end

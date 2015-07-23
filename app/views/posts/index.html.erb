@@ -7,7 +7,8 @@ Updates:
 <% @posts.each do |post| %>
   <li>
     <%= post.user.email %>: <br>
-    <%= post.content %>
+    <%= post.content %><br>
+    <%= render partial: 'likes/like_form', locals: { post: post } %>
   </li><br>
 <% end %>
 
