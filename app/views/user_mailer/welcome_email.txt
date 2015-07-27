@@ -1,0 +1,9 @@
+Welcome to Odin-facebook, <%= @user.email %>
+===============================================
+ 
+Your registration was a success and
+your username is: <%= @user.login %>.
+ 
+To login to the site, just follow this link: <%= link_to "#{@url}", @url %>.
+ 
+Thanks for joining Odin-facebook!
