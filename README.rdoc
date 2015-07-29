@@ -1,5 +1,5 @@
 Building Facebook
 
-http://www.theodinproject.com/ruby-on-rails/final-project
+www.theodinproject.com/ruby-on-rails/final-project
 
-Facebook clone project putting together some of the core features of the platform -- users, profiles, "friending", posts, news feed, and "liking". Sign-in feature implemented with Facebook through Omniauth and Devise.
+Facebook clone project putting together some of the core features of the platform – users, profiles, “friending”, posts, news feed, and “liking”.
