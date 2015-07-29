@@ -6,6 +6,7 @@
 
 conor:
   email: "conor@fake.com"
+  encrypted_password: "foobar123"
 
 dylan:
   email: "dylan@fake.com"

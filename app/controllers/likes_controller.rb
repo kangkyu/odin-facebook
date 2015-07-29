@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   def create
     @like = current_user.likes.create(like_params)
     respond_to do |format|
-      format.html { redirect_to posts_path }
+      format.html { redirect_to :back }
       format.js
     end
   end
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find(params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to posts_path }
+      format.html { redirect_to :back }
       format.js
     end
   end

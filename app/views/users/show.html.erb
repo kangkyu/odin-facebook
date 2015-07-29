@@ -2,6 +2,5 @@
 <%= gravatar_for @user %><br>
 <%= @user.email %>
 
-<h2>Posts</h2>
-<%= render 'profile_posts' %>
-
+<h2>My Posts</h2>
+<%= render partial: 'feed' %>

@@ -1,20 +1,15 @@
 class CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-  end
 
   def create
-    @user = User.find(params[:id])
     @comment = current_user.comments.build(comments_params)
     @comment.post_id = params[:post_id]
 
     if @comment.save
       flash[:success] = "Comment created!"
-      # need to fix redirect path
-      redirect_to user_path(@user)
+      redirect_to :back
     else
-      flash[:error] = "Error"
-      redirect_to user_path(@user)
+      flash[:error] = @comment.errors.full_messages
+      redirect_to :back
     end
   end
 

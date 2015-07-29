@@ -1,14 +1,2 @@
 <h1>My Feed</h1>
-<%= render 'posts/post_form' %>
-
-<br>
-
-Updates:
-<% @posts.each do |post| %>
-  <li>
-    <%= post.user.email %>: <br>
-    <%= post.content %><br>
-    <%= render partial: 'likes/like_form', locals: { post: post } %>
-  </li><br>
-<% end %>
-
+<%= render partial: 'users/feed' %>

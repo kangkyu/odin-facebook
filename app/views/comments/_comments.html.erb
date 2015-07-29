@@ -1,7 +1,8 @@
 Comments:
-<% @post.comments.each do |comment| %>
+<% post.comments.each do |comment| %>
   <li> 
-    <%= "Author: #{comment.user_id}" %>
-    <%= "Comment: #{comment.comment}" %>
-  </li>
+    <%= "#{comment.user.email} says:" %><br>
+    <%= "#{comment.comment}" %>
+  </li><br>
+
 <% end %>

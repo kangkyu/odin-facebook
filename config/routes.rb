@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'static_pages#home'
+  root 'posts#index'
   resources :users, only: [:index, :show] 
   resources :friendships, only: [:create, :destroy, :update, :index]
   get 'friend_requests' => 'friendships#show'
-  resources :posts do
+  resources :posts, except: [:new, :show] do
     resources :comments
   end
   resources :likes, only: [:create, :destroy]
-  # devise_scope :user do
-  #   root to: 'devise/sessions#new'
-  # end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

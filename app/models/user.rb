@@ -5,25 +5,23 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  has_many :friendships, -> { Friendship.accepted }
+  # DRY by combining friendships and inverse friendships (same with pending)
+  has_many :friendships, -> { Friendship.accepted }, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, -> { Friendship.accepted }, 
-            class_name: "Friendship", foreign_key: "friend_id"
+            class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   has_many :pending_friendships, -> { Friendship.pending },
-            class_name: "Friendship"
+            class_name: "Friendship", dependent: :destroy 
+  has_many :pending_friends, through: :pending_friendships, source: :friend
   has_many :pending_inverse_friendships, -> { Friendship.pending },
-            class_name: "Friendship", foreign_key: "friend_id"
- 
-
-  #would this work? simplifies lot of views and more DRY 
-  #has_many :friends, through: :inverse_friendships, source: :user 
-
-  #dependent destroy
-  has_many :posts
-  has_many :comments
-  has_many :likes
+            class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
+  has_many :pending_inverse_friends, through: :pending_inverse_friendships, source: :user
+  
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   private
     def send_welcome_email

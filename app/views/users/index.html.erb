@@ -1,6 +1,9 @@
 <% @users.each do |user| %>
-  <% if !current_user.friends.include?(user) && !current_user.inverse_friends.include?(user) && current_user.id != user.id  %>
-    <li><%= user.email %> <%= link_to "Add friend", friendships_path(friend_id: user.id, status: false), method: "post" %></li>
+  <% if current_user.id == user.id || current_user.friends.include?(user) || current_user.inverse_friends.include?(user) || current_user.pending_friends.include?(user) || current_user.pending_inverse_friends.include?(user) %>
+      <li><%= link_to user.email, user_path(user) %></li>
+  <% else %>
+     <li><%= link_to user.email, user_path(user) %> <%= link_to "Add friend", friendships_path(friend_id: user.id, status: false), method: "post" %></li>
   <% end %>
 <% end %>
+
 
