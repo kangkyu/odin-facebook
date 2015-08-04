@@ -9,24 +9,25 @@
 <br>
 
 <% @posts.each do |post| %>
-<div class="container">
-  
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= post.user.email %>
+  <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= post.user.email %>
+        </div>
+      <div class="panel-body">
+        <ul class="list-unstyled">
+          <li>  <%= post.content %></li>
+          <li class="divider"></li>
+          <li><%= render partial: 'likes/like_form', locals: { post: post } %></li>
+        </ul>
       </div>
-    <div class="panel-body">
-      <%= post.content %>
-    </div>
-    <div class="divider"></div>
-      <%= render partial: 'likes/like_form', locals: { post: post } %>
-    <div class="panel-footer">
-      <p><%= "#{post.likes.count} people like this." %></p>
-    <div class="divider"></div>
-      <%= render partial: 'comments/comments', locals: { post: post } %>
-      <%= render partial: 'comments/comment_form', locals: { post: post } %>
-    </div>
-    </div>
-</div>
+      <div class="panel-footer">
+        <p><%= "#{post.likes.count} people like this." %></p>
+      <div class="divider"></div>
+        <%= render partial: 'comments/comments', locals: { post: post } %>
+        <%= render partial: 'comments/comment_form', locals: { post: post } %>
+      </div>
+      </div>
+  </div>
 <% end %>
               
