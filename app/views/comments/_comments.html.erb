@@ -3,5 +3,6 @@
     <li> 
       <%= link_to "#{comment.user.email}", user_path(comment.user)  %> <%= "#{comment.comment}" %>
     </li>
+       <%= "#{comment.created_at.strftime("%B %d")} at #{comment.created_at.strftime("%I:%M%P")}" %>
   </ul>
 <% end %>
