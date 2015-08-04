@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     all_friend_ids = current_user.friend_ids + current_user.inverse_friend_ids
-    @posts = Post.where("user_id IN (?) OR user_id = ?", all_friend_ids, current_user.id)
+    @posts = Post.where("user_id IN (?) OR user_id = ?", all_friend_ids, current_user.id).order(created_at: :desc)
     @comment = Comment.new
   end
 
