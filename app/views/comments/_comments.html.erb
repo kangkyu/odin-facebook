@@ -1,8 +1,7 @@
-Comments:
 <% post.comments.each do |comment| %>
-  <li> 
-    <%= "#{comment.user.email} says:" %><br>
-    <%= "#{comment.comment}" %>
-  </li><br>
-
+  <ul class="list-unstyled">
+    <li> 
+      <%= link_to "#{comment.user.email}", user_path(comment.user)  %> <%= "#{comment.comment}" %>
+    </li>
+  </ul>
 <% end %>

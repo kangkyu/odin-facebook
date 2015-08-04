@@ -1,6 +1,9 @@
-<h1>Profile Information</h1>
-<%= gravatar_for @user %><br>
-<%= @user.email %>
+<div class="container">
+  <h1>Profile Information</h1>
+  <%= gravatar_for @user %><br>
+  <%= @user.email %>
+</div>
 
-<h2>My Posts</h2>
+<br>
+
 <%= render partial: 'feed' %>
