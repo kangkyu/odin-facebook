@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  after_create :send_welcome_email
+  # enable after setting up Sendgrid
+  # after_create :send_welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and 
   devise :database_authenticatable, :registerable,
