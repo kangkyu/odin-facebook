@@ -1,18 +1,34 @@
 <div class="container">
   <h1>Your Friend Requests</h1>
-  <% @my_requests.each do |request| %>
-    <li>
-      <%= request.friend.email%>
-      <%= link_to "Cancel Request", request, method: "delete" %>
-    </li>
-  <% end %>
-
-  <h1>Pending Friend Requests</h1>
-  <% @pending_friends.each do |friendship| %>
-    <li>
-    <%= friendship.user.email %>
-    <%= link_to "Accept", friendship, method: "put" %>
-    <%= link_to "Deny", friendship, method: "delete" %>
-    </li>
-  <% end %>
+  <ul class="list-group">
+    <% if @my_requests.empty? %>
+      <li class="list-group-item">No new friend requests.</li>
+    <% else %>
+      <% @my_requests.each do |request| %>
+        <li class="list-group-item">
+          <%= link_to request.friend.email, user_path(request.friend) %>
+          <%= link_to "Cancel Request", request, method: "delete" %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 </div>
+
+<div class="container">
+  <h1>Pending Friend Requests</h1>
+    <ul class="list-group">
+        <% if @pending_friends.empty? %>
+          <li class="list-group-item">No pending friend requests.</li>
+        <% else %>
+          <% @pending_friends.each do |friendship| %>
+            <li class="list-group-item">
+              <%= link_to friendship.user.email, user_path(friendship.user) %>
+              <%= link_to "Accept", friendship, method: "put" %> |
+              <%= link_to "Deny", friendship, method: "delete" %>
+            </li>
+          <% end %>
+        <% end %>
+    </ul>
+</div>
+
+
