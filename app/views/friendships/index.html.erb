@@ -1,11 +1,12 @@
-<h1>Friends</h1>
-<ul>
-  <% @friendships.each do |friendship| %>
-    <% if current_user.id == friendship.user_id %>
-      <li><%= friendship.friend.email %> <%= link_to "Remove", friendship, method: "delete" %></li>      
-    <% elsif current_user.id == friendship.friend_id %>
-      <li><%= friendship.user.email %> <%= link_to "Remove", friendship, method: "delete" %></li>
+<div class="container">
+  <h1>Friends</h1>
+  <ul>
+    <% @friendships.each do |friendship| %>
+      <% if current_user.id == friendship.user_id %>
+        <li><%= friendship.friend.email %> <%= link_to "Remove", friendship, method: "delete" %></li>      
+      <% elsif current_user.id == friendship.friend_id %>
+        <li><%= friendship.user.email %> <%= link_to "Remove", friendship, method: "delete" %></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
-
+  </ul>
+</div>
