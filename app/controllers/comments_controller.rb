@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment created!"
       redirect_to :back
     else
-      flash[:error] = @comment.errors.full_messages
+      flash[:danger] = @comment.errors.full_messages.join
       redirect_to :back
     end
   end

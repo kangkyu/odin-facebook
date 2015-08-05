@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
       flash[:success] = "Friend added!"
       redirect_to users_path
     else
-      flash[:error] = @friendship.errors.full_messages
+      flash[:error] = @friendship.errors.full_messages.join
       redirect_to users_path
     end
   end
@@ -25,6 +25,7 @@ class FriendshipsController < ApplicationController
 
   def update
     Friendship.find(params[:id]).update_attribute(:status, true)
+    flash[:success] = "Friend added!"
     redirect_to users_path
   end
 

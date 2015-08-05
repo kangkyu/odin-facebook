@@ -7,7 +7,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post created!"
       redirect_to posts_path
     else
-      flash[:error] = @post.errors.full_messages
+      flash[:danger] = @post.errors.full_messages.join
       redirect_to posts_path
     end
   end
