@@ -4,5 +4,5 @@
 </div>
 
 <br>
-
+<%= render partial: 'posts/post_form' if @user == current_user %>
 <%= render partial: 'feed' %>

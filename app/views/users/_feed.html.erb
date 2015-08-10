@@ -1,13 +1,3 @@
-<div class="container">
-  <%= form_for @post do |f| %>
-    <%= f.label :content, "Update status: " %>
-    <%= f.text_area :content, class: "form-control", placeholder: "What's on your mind?" %>
-    <%= f.submit "Post", class: "btn btn-primary btn-sm" %>
-  <% end %>
-</div>
-
-<br>
-
 <% @posts.each do |post| %>
   <div class="container">
       <div class="panel panel-default">
