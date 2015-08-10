@@ -5,10 +5,10 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to posts_path
+      redirect_to :back
     else
       flash[:danger] = @post.errors.full_messages.join
-      redirect_to posts_path
+      redirect_to :back
     end
   end
 

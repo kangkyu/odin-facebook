@@ -27,6 +27,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'bootstrap-sass'
+gem 'faker'
 
 
 # Use ActiveModel has_secure_password

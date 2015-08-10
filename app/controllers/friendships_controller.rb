@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
   def update
     Friendship.find(params[:id]).update_attribute(:status, true)
     flash[:success] = "Friend added!"
-    redirect_to users_path
+    redirect_to :back
   end
 
   def index
