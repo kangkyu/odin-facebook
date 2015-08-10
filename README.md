@@ -7,5 +7,5 @@ A Facebook clone project from
 
 Sign up or use the guest account below.
 
-<p>email: foobar@foobar.com</p>
-<p>password: foobar</p>
+email: foobar@foobar.com
+password: foobar123
