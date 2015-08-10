@@ -20,7 +20,9 @@ class FriendshipsController < ApplicationController
 
   def show
     @my_requests = current_user.pending_friendships
-    @pending_friends = current_user.pending_inverse_friendships
+    @pending_requests = current_user.pending_inverse_friendships
+    @pending_friends = current_user.pending_friends.sort_by { |friend| friend.email }
+    @pending_inverse_friends = current_user.pending_inverse_friends.sort_by { |friend| friend.email }
   end
 
   def update

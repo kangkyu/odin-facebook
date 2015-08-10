@@ -4,13 +4,15 @@
     <% if @my_requests.empty? %>
       <li class="list-group-item">No new friend requests.</li>
     <% else %>
-      <% @my_requests.each do |request| %>
-        <li class="list-group-item clearfix">
-          <%= link_to request.friend.email, user_path(request.friend) %>
-          <span class="pull-right">
-            <%= button_to "Cancel Request", request, method: "delete", class: "btn btn-sm" %>
-          </span>
-        </li>
+      <% @pending_friends.each do |friend| %>
+        <% friendship = @my_requests.find { |i| i["user_id"] == friend.id || i["friend_id"] == friend.id } %>
+          
+          <li class="list-group-item clearfix">
+            <%= link_to friend.email, user_path(friend) %>
+            <span class="pull-right">
+              <%= button_to "Cancel Request", friendship, method: "delete", class: "btn btn-sm" %>
+            </span>
+          </li>
       <% end %>
     <% end %>
   </ul>
@@ -19,12 +21,14 @@
 <div class="container">
   <h1>Pending Friend Requests</h1>
     <ul class="list-group">
-        <% if @pending_friends.empty? %>
+        <% if @pending_requests.empty? %>
           <li class="list-group-item">No pending friend requests.</li>
         <% else %>
-          <% @pending_friends.each do |friendship| %>
+          <% @pending_inverse_friends.each do |friend| %>        
+            <% friendship = @pending_requests.find { |i| i["user_id"] == friend.id || i["friend_id"] == friend.id } %>
+
             <li class="list-group-item clearfix">
-              <%= link_to friendship.user.email, user_path(friendship.user) %>
+              <%= link_to friend.email, user_path(friend) %>
               <span class="pull-right">
                 <%= button_to "Deny", friendship, method: "delete", class: "btn btn-sm" %>
               </span>
@@ -36,5 +40,3 @@
         <% end %>
     </ul>
 </div>
-
-
