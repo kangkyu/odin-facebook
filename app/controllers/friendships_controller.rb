@@ -31,6 +31,7 @@ class FriendshipsController < ApplicationController
 
   def index
     @friendships = current_user.friendships + current_user.inverse_friendships
+    @all_friends = (current_user.friends + current_user.inverse_friends).sort_by { |friend| friend.email }
   end
 
   private
