@@ -1,0 +1,7 @@
+<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+<%= link_to "Like", likes_path(post_id: post.id), method: 'post', remote: true %><br>
+<% if post.likes.count == 0 %>
+  <%= "Be the first to like this!" %>
+<% else %>
+  <%= pluralize(post.likes.count, 'person') %> liked this.
+<% end %>

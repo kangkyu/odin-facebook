@@ -11,12 +11,10 @@
         <ul class="list-unstyled">
           <li>  <%= post.content %></li>
           <li class="divider"></li>
-          <li><%= render partial: 'likes/like_form', locals: { post: post } %></li>
+          <li><%= render partial: 'users/like_form', locals: { post: post } %></li>
         </ul>
       </div>
       <div class="panel-footer">
-        <p><%= "#{post.likes.count} people like this." %></p>
-      <div class="divider"></div>
         <%= render partial: 'comments/comments', locals: { post: post } %>
         <%= render partial: 'comments/comment_form', locals: { post: post } %>
       </div>

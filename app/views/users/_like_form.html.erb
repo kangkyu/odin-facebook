@@ -1,0 +1,7 @@
+<%= div_for(post) do %>
+  <% if current_user.likes.find_by(post_id: post.id).nil? %>
+    <%= render partial: 'users/like', locals: { post: post } %>
+  <% else %>
+    <%= render partial: 'users/unlike', locals: { post: post } %>
+  <% end %>
+<% end %>

@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
-  #ajax js not implemented yet
   
   def create
     @like = current_user.likes.create(like_params)
+    @post = Post.find(@like.post_id)
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
@@ -10,7 +10,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id]).destroy
+    @like = Like.find(params[:id])
+    @like.destroy
+    @post = Post.find(@like.post_id)
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
