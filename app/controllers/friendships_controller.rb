@@ -2,20 +2,19 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(friendship_params)
-
-    if @friendship.save
-      flash[:success] = "Friend added!"
-      redirect_to users_path
-    else
-      flash[:error] = @friendship.errors.full_messages.join
-      redirect_to users_path
+    @friendship.save
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render :layout => false }
     end
   end
 
   def destroy
     Friendship.find(params[:id]).destroy
-    flash[:success] = "Friend removed!"
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render :layout => false }
+    end
   end
 
   def show
@@ -27,8 +26,10 @@ class FriendshipsController < ApplicationController
 
   def update
     Friendship.find(params[:id]).update_attribute(:status, true)
-    flash[:success] = "Friend added!"
-    redirect_to :back
+     respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render :layout => false }
+    end
   end
 
   def index

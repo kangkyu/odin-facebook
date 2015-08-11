@@ -6,7 +6,13 @@
         <% else %> 
           <% @all_friends.each do |friend| %>
             <% friendship = @friendships.find { |i| i["user_id"] == friend.id || i["friend_id"] == friend.id } %>
-            <li class="list-group-item clearfix"><%= link_to friend.email, user_path(friend) %><span class="pull-right"><%= button_to "Remove friend", friendship, method: "delete", class: "btn btn-sm" %></span></li>
+            <li class="list-group-item clearfix"><%= link_to friend.email, user_path(friend) %>
+              <span class="remove_friend pull-right">
+            
+                <%= button_to "Remove friend", friendship, method: "delete", remote: true, class: "btn btn-sm" %>
+              </span>
+            </li>
+           
           <% end %>
         <% end %>
       </ul>

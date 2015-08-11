@@ -9,8 +9,8 @@
           
           <li class="list-group-item clearfix">
             <%= link_to friend.email, user_path(friend) %>
-            <span class="pull-right">
-              <%= button_to "Cancel Request", friendship, method: "delete", class: "btn btn-sm" %>
+            <span class="remove_friend pull-right">
+              <%= button_to "Cancel Request", friendship, method: "delete", remote: true, class: "btn btn-sm" %>
             </span>
           </li>
       <% end %>
@@ -29,11 +29,11 @@
 
             <li class="list-group-item clearfix">
               <%= link_to friend.email, user_path(friend) %>
-              <span class="pull-right">
-                <%= button_to "Deny", friendship, method: "delete", class: "btn btn-sm" %>
+              <span class="remove_friend pull-right">
+                <%= button_to "Deny", friendship, method: "delete", remote: true, class: "btn btn-sm" %>
               </span>
-              <span class="pull-right">
-                <%= button_to "Accept", friendship, method: "put", class: "btn btn-sm" %>
+              <span class="accept_friend pull-right">
+                <%= button_to "Accept", friendship, method: "put", remote: true, class: "btn btn-sm" %>
               </span>
             </li>
           <% end %>

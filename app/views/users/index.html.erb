@@ -5,7 +5,7 @@
       <% if current_user.id == user.id || current_user.friends.include?(user) || current_user.inverse_friends.include?(user) || current_user.pending_friends.include?(user) || current_user.pending_inverse_friends.include?(user) %>
           <li class="list-group-item"><%= link_to user.email, user_path(user) %></li>
       <% else %>
-         <li class="list-group-item clearfix"><%= link_to user.email, user_path(user) %> <span class="pull-right"><%= button_to "Add friend", friendships_path(friend_id: user.id, status: false), method: "post", class: "btn btn-sm" %></span></li>
+         <li class="list-group-item clearfix"><%= link_to user.email, user_path(user) %> <span class="add_friend pull-right"><%= button_to "Add friend", friendships_path(friend_id: user.id, status: false), method: "post", remote: true, class: "btn btn-sm" %></span></li>
       <% end %>
     <% end %>
   </ul>
