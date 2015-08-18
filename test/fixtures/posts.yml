@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   content: MyText
-#   user_id: 1
+one:
+  id: 1
+  user: conor
+  content: "This is conor"
 
-# two:
-#   content: MyText
-#   user_id: 1
+two:
+  id: 2
+  user: dylan
+  content: "This is dylan"

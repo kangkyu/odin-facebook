@@ -3,8 +3,11 @@ class Friendship < ActiveRecord::Base
   belongs_to :friend, class_name: "User"
   scope :accepted, -> { where(status: true) }
   scope :pending, -> { where(status: false) }
+  validates :user_id, presence: true
+  validates :friend_id, presence: true
+  validates :status, :inclusion => { :in => [true, false] }
   validate :friend_self
-  validate :friendship_exists
+  validate :friendship_exists, if: Proc.new { |a| a.user_id? && a.friend_id? }
 
   def friend_self
     if friend_id == user_id
