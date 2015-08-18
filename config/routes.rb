@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] 
   resources :friendships, only: [:create, :destroy, :update, :index]
   get 'friend_requests' => 'friendships#show'
-  resources :posts, except: [:new, :show] do
+  resources :posts, only: [:create, :index] do
     resources :comments
   end
   resources :likes, only: [:create, :destroy]
