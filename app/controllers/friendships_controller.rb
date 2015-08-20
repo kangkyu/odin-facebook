@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
 
   def update
     Friendship.find(params[:id]).update_attribute(:status, true)
-     respond_to do |format|
+    respond_to do |format|
       format.html { redirect_to :back }
       format.js { render :layout => false }
     end

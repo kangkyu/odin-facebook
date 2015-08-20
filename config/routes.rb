@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy, :update, :index]
   get 'friend_requests' => 'friendships#show'
   resources :posts, only: [:create, :index] do
-    resources :comments
+    resources :comments, only: [:create]
   end
   resources :likes, only: [:create, :destroy]
 
